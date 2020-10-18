@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{{title}}</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no"/>
+  <meta name="format-detection" content="email=no"/>
+  <script>
+    (function () {
+      var htmlFontSize = document.documentElement.clientWidth / 375 * 100 + 'px';
+      var bodyFontSize = '16px';
+      var styleDom = document.createElement('style');
+      styleDom.innerHTML = 'html{font-size:' + htmlFontSize + '!important;}body{font-size:' + bodyFontSize + '!important;}';
+      document.getElementsByTagName('head')[0].appendChild(styleDom)
+    })();
+  </script>
+  <script src="https://mpaas-ios.oss-cn-hangzhou.aliyuncs.com/js/mtracker/4.0.0.1/mtracker-mdap.js"></script>
+  <script>
+    // 埋点基本配置 （会自动触发一次访问量埋点）
+     window._to = {
+            server: 'https://cn-hangzhou-mas-log.cloud.alipay.com/loggw/webLog.do', //埋点调用地址
+            appId: '159BF7E191013', //MPASS AppID
+            workspaceId: 'prd', //工作环境
+            userId: '', //用户ID 
+            h5version: '1.0.0.0', //版本号
+            bizScenario: '', // 选填，渠道来源
+            platformType: "ios", //平台类型: iOSApp,androidApp(app类型)
+            autoExpo: false, // 是否开启曝光埋点 false scroll
+            mtrDebug: true, // 是否开启打印日志 生产环境需为false
+            mPageState: "00000001" // 页面状态,访问量埋点时用到
+          }
+    window.initTracker()
+  </script>
+</head>
+<body>
+  {% block body %}
+  <div id="app"></div>
+  {% endblock %}
+</body>
+
+</html>
